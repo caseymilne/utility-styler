@@ -154,10 +154,12 @@ class Plugin {
 
 	public function scripts() {
 
-		add_action('wp_enqueue_scripts', function () {
+		add_action( 'enqueue_block_assets', function() {
 
 			global $post;
-			if ( $this->post_needs_utility_styles_parsed( $post->ID ) ) {
+			global $current_screen;
+
+			if ( $current_screen !== null && $current_screen->is_block_editor() || $this->post_needs_utility_styles_parsed( $post->ID ) ) {
 
 				wp_enqueue_script(
 	        'unocss-runtime-preset-wind',
@@ -208,6 +210,12 @@ class Plugin {
 
 		});
 
+		add_action( 'wp_enqueue_scripts', function () {
+
+
+
+		});
+
 	}
 
 	/**
@@ -219,7 +227,7 @@ class Plugin {
 	    $table_name = $wpdb->prefix . 'utility_styles';
 	    $query = "SELECT selector, rules FROM $table_name";
 	    $styles = $wpdb->get_results($query, ARRAY_A);
-	    $stylesheet = '';
+	    $stylesheet = '.wp-block';
 			foreach ($styles as $style) {
         $selector = $style['selector'];
         $rules = $style['rules'];
