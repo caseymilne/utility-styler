@@ -13,6 +13,10 @@ When you visit the page on the front-end for the first time, UnoCSS runs again, 
 1. Avoid always using a runtime generator (which is not suitable for production despite being surprisingly fast).
 2. Avoid requiring an NPM or CLI build of the Tailwind classes.
 
-   ## Will other Utility class names work?
+## Will other Utility class names work?
 
-   Maybe? If you're familiar with UnoCSS you'll know it branches off from Tailwind and supports other utility class approaches. The runtime parser is setup for Tailwind, but it might also parse other naming approaches... that's something to test and play around with, but the intent so far has just been to use Tailwind.
+Maybe? If you're familiar with UnoCSS https://unocss.dev/ you'll know it branches off from Tailwind and supports other utility class approaches. The runtime parser is setup for Tailwind, but it might also parse other naming approaches... that's something to test and play around with, but the intent so far has just been to use Tailwind.
+
+## What is the future of the project?
+
+It could become a free plugin for end-users who want to leverage Tailwind + Gutenberg. The other goal is to provide it as an example of how to leverage Tailwind in plugin development.
